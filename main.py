@@ -46,6 +46,7 @@ def read_file_safe(filename):
         return "Error: An I/O error occurred"
 
 def safe_eval(expression):
+    import ast
     try:
         # Użycie literal_eval dla bezpiecznego przetwarzania literalów
         return ast.literal_eval(expression)
