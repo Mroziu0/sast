@@ -1,24 +1,31 @@
-def insecure_function(user_input):
+def unsafe_sql_query(user_input):
+    import sqlite3
+
     # Potencjalna podatność na SQL Injection
-    query = f"SELECT * FROM users WHERE username = '{user_input}'"
-    print(query)  # Użycie niebezpiecznego wejścia bez sanitizacji
+    connection = sqlite3.connect('database.db')
+    cursor = connection.cursor()
+    query = f"SELECT * FROM users WHERE username = '{user_input}'"  # Niebezpieczne zapytanie
+    cursor.execute(query)
+    return cursor.fetchall()
 
-def example_division(a, b):
-    return a / b  # Brak obsługi dzielenia przez zero
+def divide_numbers(a, b):
+    # Brak obsługi zerowego dzielnika
+    return a / b
 
-def read_file(filename):
-    with open(filename, 'r') as file:
-        content = file.read()
-    return content  # Brak obsługi potencjalnych błędów wejścia/wyjścia
+def read_file(file_path):
+    with open(file_path, 'r') as f:
+        data = f.read()  # Brak obsługi błędów
+    return data
 
-def insecure_eval(user_input):
-    eval(user_input)  # Wykorzystanie eval na niezweryfikowanym wejściu
+def eval_user_input(user_input):
+    # Użycie eval na niepewnym wejściu
+    return eval(user_input)  # Potencjalna podatność na wykonanie kodu
 
-# Przykłady wywołań
-insecure_function("admin' --")
-print(example_division(10, 0))  # To wywołanie spowoduje błąd
-print(read_file("test.txt"))
-insecure_eval("__import__('os').system('ls')")
+# Przykładowe wywołania
+print(unsafe_sql_query("admin' --"))
+print(divide_numbers(5, 0))  # To wywołanie spowoduje błąd
+print(read_file("nonexistent.txt"))  # Może spowodować błąd
+print(eval_user_input("__import__('os').system('ls')"))  # Niebezpieczne wykonanie
 
 # def safe_division(a, b):
 #     # Obsługuje przypadek dzielenia przez zero
