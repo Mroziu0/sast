@@ -22,6 +22,7 @@ jobs:
 
       - name: Run CodeQL analysis
         uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
-        # with:
+        with: 
+          category: "/language:python"
         #   category: security
         #   output: results.sarif      # Wybierz format wyników
