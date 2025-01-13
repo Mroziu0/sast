@@ -33,7 +33,9 @@ jobs:
         run: |
           bandit -r . -f json -o bandit-results.json
 
-# cat bandit-results.json
+      - name: Show Bandit result
+        run: |
+          cat bandit-results.json
 
       - name: Run CodeQL analysis
         uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
