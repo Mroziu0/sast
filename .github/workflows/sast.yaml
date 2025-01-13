@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Sprawdź kod źródłowy
+        uses: actions/checkout@v4  # Sprawdź kod źródłowy
 
       - name: Set up CodeQL
-        uses: github/codeql-action/setup@v2  # Ustaw CodeQL
+        uses: github/codeql-action/setup@v3  # Ustaw CodeQL
         with:
           languages: javascript  # Podaj języki do analizy (np. javascript, python, java)
 
