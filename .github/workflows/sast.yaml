@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4  # Sprawdź kod źródłowy
 
       - name: Set up CodeQL
-        uses: github/codeql-action/setup@v3  # Ustaw CodeQL
+        uses: github/codeql-action/init@v3  # Ustaw CodeQL
         with:
           languages: javascript  # Podaj języki do analizy (np. javascript, python, java)
 
