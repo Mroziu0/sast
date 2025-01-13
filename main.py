@@ -22,6 +22,15 @@ def eval_user_input(user_input):
     # Użycie eval na niepewnym wejściu
     return eval(user_input)  # Potencjalna podatność na wykonanie kodu
 
+
+
+
+
+
+
+
+
+
 # Użycie generujących błędy wywołań
 print(unsafe_sql_query("admin' --"))
 print(divide_numbers(5, 0))  # Brak obsługi dzielenia przez zero
@@ -54,3 +63,9 @@ print(eval_user_input("__import__('os').system('ls')"))  # Niebezpieczne wykonan
 # print(safe_division(10, 2))
 # print(read_file_safe("test.txt"))
 # print(safe_eval("1 + 2"))
+
+
+
+
+
+
