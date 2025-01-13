@@ -18,10 +18,10 @@ jobs:
       - name: Set up CodeQL
         uses: github/codeql-action/init@v3  # Ustaw CodeQL
         with:
-          languages: javascript  # Podaj języki do analizy (np. javascript, python, java)
+          languages: python  # Podaj języki do analizy (np. javascript, python, java)
 
       - name: Run CodeQL analysis
-        uses: github/codeql-action/analyze@v2  # Uruchom analizę CodeQL
+        uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
         with:
           category: security
           output: results.sarif      # Wybierz format wyników
