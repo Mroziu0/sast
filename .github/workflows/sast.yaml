@@ -1,0 +1,28 @@
+name: SAST with CodeQL
+
+on:
+  push:
+    branches: [main, sast]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Sprawdź kod źródłowy
+
+      - name: Set up CodeQL
+        uses: github/codeql-action/init@v3  # Ustaw CodeQL
+        with:
+          languages: python  # Podaj języki do analizy (np. javascript, python, java)
+
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
+        with: 
+          # category: "/language:python"
+          category: security
+          output: results.sarif      # Wybierz format wyników
