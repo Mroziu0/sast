@@ -25,6 +25,13 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
+        with: 
+          # category: "/language:python"
+          category: security
+          output: results.sarif      # Wybierz format wyników
+
       - name: Install Bandit
         run: |
           pip install bandit
@@ -37,10 +44,3 @@ jobs:
         if: always()
         run: |
           cat bandit-results.json
-
-      - name: Run CodeQL analysis
-        uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
-        with: 
-          # category: "/language:python"
-          category: security
-          output: results.sarif      # Wybierz format wyników
