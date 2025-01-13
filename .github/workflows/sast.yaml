@@ -25,7 +25,7 @@ jobs:
         # with:
         #   category: security
         #   output: results.sarif      # Wybierz format wyników
-      - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: results.sarif
+      # - name: Upload SARIF results
+      #   uses: github/codeql-action/upload-sarif@v2
+      #   with:
+      #     sarif_file: results.sarif
