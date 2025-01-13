@@ -20,6 +20,20 @@ jobs:
         with:
           languages: python  # Podaj języki do analizy (np. javascript, python, java)
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Bandit
+        run: |
+          pip install bandit
+
+      - name: Run Bandit
+        run: |
+          bandit -r . -f json -o bandit-results.json
+          cat bandit-results.json
+
       - name: Run CodeQL analysis
         uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
         with: 
