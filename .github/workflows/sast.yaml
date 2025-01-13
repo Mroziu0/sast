@@ -8,19 +8,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  sast:
-    name: sast
+  analyze:
+    name: Analyze
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Sprawdź kod źródłowy
 
       - name: Set up CodeQL
-        uses: github/codeql-action/setup@v2
+        uses: github/codeql-action/setup@v2  # Ustaw CodeQL
         with:
-          languages: python # Choose your language (e.g., python, java, etc.)
+          languages: javascript  # Podaj języki do analizy (np. javascript, python, java)
+
       - name: Run CodeQL analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v2  # Uruchom analizę CodeQL
         with:
           category: security
-          output: results.sarif
+          output: results.sarif      # Wybierz format wyników
