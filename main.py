@@ -46,9 +46,12 @@ def read_file_safe(filename):
         return "Error: An I/O error occurred"
 
 def safe_eval(expression):
-    # Uważaj na eval – zaleca się unikanie go, ale jeśli musi być użyty:
-    safe_names = {'__builtins__': None}  # Ograniczamy dostęp do wbudowanych funkcji
-    return eval(expression, safe_names)
+    try:
+        # Użycie literal_eval dla bezpiecznego przetwarzania literalów
+        return ast.literal_eval(expression)
+    except (ValueError, SyntaxError) as e:
+        print(f"Error evaluating expression: {e}")
+        return None  # Możesz zdefiniować inne zachowanie w przypadku błędu
 
 # Przykładowe wywołania funkcji
 print(safe_division(10, 2))
