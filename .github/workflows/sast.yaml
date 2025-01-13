@@ -33,7 +33,8 @@ jobs:
         run: |
           bandit -r . -f json -o bandit-results.json
 
-      - name: Show Bandit result
+      - name: Show Bandit results
+        if: always()
         run: |
           cat bandit-results.json
 
