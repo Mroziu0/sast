@@ -31,6 +31,12 @@ jobs:
           # category: "/language:python"
           category: security
           output: results.sarif      # Wybierz format wyników
+      - name: Show CodeQL results
+        if: always()
+        run: |
+          echo "CodeQL Analysis Results:"
+          cat /home/runner/work/sast/sast/results.sarif/python.sarif
+# cat ${{ github.workspace }}/path/to/codeql-results.sarif  # Zmodyfikuj tę ścieżkę na odpowiednią
 
       - name: Install Bandit
         run: |
