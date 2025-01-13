@@ -4,27 +4,28 @@ def unsafe_sql_query(user_input):
     # Potencjalna podatność na SQL Injection
     connection = sqlite3.connect('database.db')
     cursor = connection.cursor()
-    query = f"SELECT * FROM users WHERE username = '{user_input}'"  # Niebezpieczne zapytanie
+    
+    # Niebezpieczne zapytanie
+    query = f"SELECT * FROM users WHERE username = '{user_input}'"
     cursor.execute(query)
     return cursor.fetchall()
 
 def divide_numbers(a, b):
-    # Brak obsługi zerowego dzielnika
-    return a / b
+    # Brak obsługi dzielenia przez zero
+    return a / b  # To spowoduje błąd, jeśli b = 0
 
 def read_file(file_path):
     with open(file_path, 'r') as f:
-        data = f.read()  # Brak obsługi błędów
-    return data
+        return f.read()  # Brak obsługi błędów
 
 def eval_user_input(user_input):
     # Użycie eval na niepewnym wejściu
     return eval(user_input)  # Potencjalna podatność na wykonanie kodu
 
-# Przykładowe wywołania
+# Użycie generujących błędy wywołań
 print(unsafe_sql_query("admin' --"))
-print(divide_numbers(5, 0))  # To wywołanie spowoduje błąd
-print(read_file("nonexistent.txt"))  # Może spowodować błąd
+print(divide_numbers(5, 0))  # Brak obsługi dzielenia przez zero
+print(read_file("nonexistent.txt"))  # Próbuj otworzyć nieistniejący plik
 print(eval_user_input("__import__('os').system('ls')"))  # Niebezpieczne wykonanie
 
 # def safe_division(a, b):
