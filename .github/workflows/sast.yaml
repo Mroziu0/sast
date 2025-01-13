@@ -20,7 +20,7 @@ jobs:
         with:
           languages: python # Choose your language (e.g., python, java, etc.)
       - name: Run CodeQL analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
         with:
           category: security
           output: results.sarif
