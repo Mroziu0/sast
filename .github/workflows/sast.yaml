@@ -31,6 +31,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   
       - name: Run Snyk to check for vulnerabilities
+        if: always()
         uses: snyk/actions/python@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -38,10 +39,12 @@ jobs:
           command: monitor
 
       - name: Run CodeQL analysis
+        if: always()
         uses: github/codeql-action/analyze@v3
         with: 
           category: security
           output: results.sarif
+
       - name: Show CodeQL results
         if: always()
         run: |
