@@ -1,0 +1,2 @@
+# Old version - may show vulnerabilities
+requests==2.21.0
