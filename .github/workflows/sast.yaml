@@ -25,18 +25,17 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Snyk CLI
-        run: pip install snyk
-
       - name: Run Snyk Test
-        run: snyk test
+        uses: snyk/actions/python@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   
-      - name: Run Snyk Monitor
-        run: snyk monitor
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
 
       - name: Run CodeQL analysis
         uses: github/codeql-action/analyze@v3
