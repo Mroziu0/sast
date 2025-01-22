@@ -1,32 +1,32 @@
-# def unsafe_sql_query(user_input):
-#     import sqlite3
+def unsafe_sql_query(user_input):
+    import sqlite3
 
-#     # Potencjalna podatność na SQL Injection
-#     connection = sqlite3.connect('database.db')
-#     cursor = connection.cursor()
+    # Potencjalna podatność na SQL Injection
+    connection = sqlite3.connect('database.db')
+    cursor = connection.cursor()
     
-#     # Niebezpieczne zapytanie
-#     query = f"SELECT * FROM users WHERE username = '{user_input}'"
-#     cursor.execute(query)
-#     return cursor.fetchall()
+    # Niebezpieczne zapytanie
+    query = f"SELECT * FROM users WHERE username = '{user_input}'"
+    cursor.execute(query)
+    return cursor.fetchall()
 
-# def divide_numbers(a, b):
-#     # Brak obsługi dzielenia przez zero
-#     return a / b  # To spowoduje błąd, jeśli b = 0
+def divide_numbers(a, b):
+    # Brak obsługi dzielenia przez zero
+    return a / b  # To spowoduje błąd, jeśli b = 0
 
-# def read_file(file_path):
-#     with open(file_path, 'r') as f:
-#         return f.read()  # Brak obsługi błędów
+def read_file(file_path):
+    with open(file_path, 'r') as f:
+        return f.read()  # Brak obsługi błędów
 
-# def eval_user_input(user_input):
-#     # Użycie eval na niepewnym wejściu
-#     return eval(user_input)  # Potencjalna podatność na wykonanie kodu
+def eval_user_input(user_input):
+    # Użycie eval na niepewnym wejściu
+    return eval(user_input)  # Potencjalna podatność na wykonanie kodu
 
-# # Użycie generujących błędy wywołań
-# print(unsafe_sql_query("admin' --"))
-# print(divide_numbers(5, 0))  # Brak obsługi dzielenia przez zero
-# print(read_file("nonexistent.txt"))  # Próbuj otworzyć nieistniejący plik
-# print(eval_user_input("__import__('os').system('ls')"))  # Niebezpieczne wykonanie
+# Użycie generujących błędy wywołań
+print(unsafe_sql_query("admin' --"))
+print(divide_numbers(5, 0))  # Brak obsługi dzielenia przez zero
+print(read_file("nonexistent.txt"))  # Próbuj otworzyć nieistniejący plik
+print(eval_user_input("__import__('os').system('ls')"))  # Niebezpieczne wykonanie
 
 def safe_division(a, b):
     # Obsługuje przypadek dzielenia przez zero

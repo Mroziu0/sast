@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Sprawdź kod źródłowy
+        uses: actions/checkout@v4
 
       - name: Set up CodeQL
-        uses: github/codeql-action/init@v3  # Ustaw CodeQL
+        uses: github/codeql-action/init@v3
         with:
-          languages: python  # Podaj języki do analizy (np. javascript, python, java)
+          languages: python 
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -26,11 +26,10 @@ jobs:
           python-version: '3.x'
 
       - name: Run CodeQL analysis
-        uses: github/codeql-action/analyze@v3  # Uruchom analizę CodeQL
+        uses: github/codeql-action/analyze@v3
         with: 
-          # category: "/language:python"
           category: security
-          output: results.sarif      # Wybierz format wyników
+          output: results.sarif
       - name: Show CodeQL results
         if: always()
         run: |
@@ -49,3 +48,15 @@ jobs:
         if: always()
         run: |
           cat bandit-results.json
+          - name: Install Snyk CLI
+          run: pip install snyk
+    
+      - name: Run Snyk Test
+        run: snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  
+      - name: Run Snyk Monitor
+        run: snyk monitor
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
