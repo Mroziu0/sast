@@ -48,7 +48,8 @@ jobs:
         if: always()
         run: |
           cat bandit-results.json
-          - name: Install Snyk CLI
+          
+      - name: Install Snyk CLI
           run: pip install snyk
     
       - name: Run Snyk Test
