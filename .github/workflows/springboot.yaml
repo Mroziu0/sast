@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'  # Using Eclipse Temurin (Adoptium) distribution
 
     - name: Build with Gradle
-      run: gradle build
+      run: gradle -p ./raspdemo/ build
 
     - name: Run Tests
       run: gradle test
