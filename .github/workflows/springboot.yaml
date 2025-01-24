@@ -29,5 +29,5 @@ jobs:
 
     - name: Run the Application
       run: |
-        nohup java -javaagent:"./raspdemo/rasp/rasp/rasp.jar" -jar ./raspdemo/build/libs/your-app-name-0.0.1-SNAPSHOT.jar 
+        nohup java -javaagent:"./raspdemo/rasp/rasp/rasp.jar" -jar ./raspdemo/build/libs/raspdemo-0.0.1-SNAPSHOT.jar
         echo "Application is running"
