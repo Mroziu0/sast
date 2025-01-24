@@ -22,16 +22,10 @@ jobs:
         distribution: 'temurin'  # Using Eclipse Temurin (Adoptium) distribution
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: gradle build
 
     - name: Run Tests
-      run: ./gradlew test
-
-    - name: Build with Gradle
-      run: ./gradlew build --no-daemon
-
-    - name: Run Tests
-      run: ./gradlew test
+      run: gradle test
 
     - name: Run the Application
       run: |
