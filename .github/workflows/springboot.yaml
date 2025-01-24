@@ -25,7 +25,7 @@ jobs:
       run: gradle -p ./raspdemo/ build
 
     - name: Run Tests
-      run: gradle test
+      run: gradle -p ./raspdemo/ test
 
     - name: Run the Application
       run: |
