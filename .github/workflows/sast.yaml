@@ -52,10 +52,12 @@ jobs:
           cat /home/runner/work/sast/sast/results.sarif/python.sarif
 
       - name: Install Bandit
+        if: always()
         run: |
           pip install bandit
 
       - name: Run Bandit
+        if: always()
         run: |
           bandit -r . -f json -o bandit-results.json
 
